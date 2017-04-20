@@ -1,0 +1,6 @@
+node_modules/
+*.log
+creds.json
+Git Bash.lnk
+src/models/item.ts
+src/routers/item.ts
