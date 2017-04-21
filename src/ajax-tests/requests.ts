@@ -1,17 +1,17 @@
 import fetch from 'node-fetch';
 
 var body = {
-    "id": "1",
-    "name": "React.js Essentials",
-    "description": "A fast-paced guide to designing and building scalable and maintainable web apps with React.js.",
-    "quantity": "10"
+    "id": 1,
+    "itemName": "bread",
+    "quantity": 1,
+    "price": 1.99
 };
 
 var body2 = {
-    "id": "2",
-    "name": "React.js NON-Essentials",
-    "description": "Not much in this book",
-    "quantity": "500"
+    "id": 2,
+    "itemName": "cereal",
+    "quantity": 2,
+    "price": 2.25
 };
 
 // fetch('http://localhost:8080/api/items', {
@@ -24,14 +24,28 @@ var body2 = {
 
 
 async function postData() {
-    const res = await fetch('http://localhost:8080/api/items', {
+    const res = await fetch('http://localhost:8080/api/grocery-items/', {
         method: 'POST',
         body: JSON.stringify(body2),
         headers: { 'Content-Type': 'application/json' },
     });
-    const json = await res.json();
+    const json = await res.json().catch((reason: any) => {
+        console.log(reason);
+    });
+    console.log(json);
+}
+
+async function getData() {
+    const res = await fetch('http://localhost:8080/api/grocery-items/', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    });
+    const json = await res.json().catch((reason: any) => {
+        console.log(reason);
+    });
     console.log(json);
 }
 
 
-postData();
+// postData();
+getData();
