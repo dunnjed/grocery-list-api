@@ -1,1 +1,1 @@
-## Grocery List API
+## Shopping List API
