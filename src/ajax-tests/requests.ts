@@ -8,10 +8,9 @@ var body = {
 };
 
 var body2 = {
-    "id": 2,
-    "itemName": "cereal",
-    "quantity": 2,
-    "price": 2.25
+    "itemName": "cheese",
+    "quantity": 3,
+    "price": 4.50
 };
 
 // fetch('http://localhost:8080/api/items', {
@@ -24,7 +23,7 @@ var body2 = {
 
 
 async function postData() {
-    const res = await fetch('http://localhost:8080/api/grocery-items/', {
+    const res = await fetch('http://localhost:8000/list-item/', {
         method: 'POST',
         body: JSON.stringify(body2),
         headers: { 'Content-Type': 'application/json' },
@@ -47,5 +46,5 @@ async function getData() {
 }
 
 
-// postData();
-getData();
+postData();
+//getData();
