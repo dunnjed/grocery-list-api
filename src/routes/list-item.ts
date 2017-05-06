@@ -8,7 +8,7 @@ export function getListItems(req, res) {
     //Query the DB and if no errors, send all the list items
     let query = ListItem.find({});
     query.exec((err, listItems) => {
-        if(err) res.send(err);
+        if(err) return res.send(err);
         //If no errors, send them back to the client
         res.json(listItems);
     });
@@ -23,7 +23,7 @@ export function postListItem(req, res) {
     //Save it into the DB.
     newListItem.save((err, listItem) => {
         if(err) {
-            res.send(err);
+            return res.send(err);
         }
         else { //If no errors, send it back to the client
             res.json({message: "List item successfully added!", listItem });
@@ -36,7 +36,7 @@ export function postListItem(req, res) {
  */
 export function getListItem(req, res) {
     ListItem.findById(req.params.id, (err, listItem) => {
-        if(err) res.send(err);
+        if(err) return res.send(err);
         //If no errors, send it back to the client
         res.json(listItem);
     });     
@@ -56,9 +56,9 @@ export function deleteListItem(req, res) {
  */
 export function updateListItem(req, res) {
     ListItem.findById({_id: req.params.id}, (err, listItem) => {
-        if(err) res.send(err);
+        if(err) return res.send(err);
         Object.assign(listItem, req.body).save((err, listItem) => {
-            if(err) res.send(err);
+            if(err) return res.send(err);
             res.json({ message: 'List item updated!', listItem });
         }); 
     });
